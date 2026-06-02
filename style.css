@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    background: black;
+    overflow: hidden;
+}
+
+/* canvas Three.js */
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* UI поверх */
+#ui {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 10;
+
+    color: #00e5ff;
+    font-size: 90px;
+    letter-spacing: 12px;
+    font-family: Arial, sans-serif;
+
+    opacity: 0.8;
+
+    text-shadow:
+        0 0 10px #00e5ff,
+        0 0 20px #00e5ff,
+        0 0 40px #00e5ff;
+
+    pointer-events: none;
+
+    animation: glow 2.5s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+}
+
+h1 {
+    color: white;
+    font-size: 80px;
+    letter-spacing: 10px;
+
+    transition: transform 0.2s ease-out;
+
+    animation: fadeIn 2s ease forwards, breathe 3s ease-in-out infinite;
+    animation-delay: 0s, 2s;
+}
