@@ -13,7 +13,7 @@
         }
     }, delay);
 }
-typeText("You're looser", "output-div", 500);
+typeText("ZERO", "output-div", 500);
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000);
