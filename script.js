@@ -1,17 +1,20 @@
- function typeText(text, elementId, delay) {
-    let index = 0;
-    const element = document.getElementById(elementId);
+const startTime = Date.now();
+let rotationSpeed = 0;
 
-    element.innerHTML = '';
+function typeText(text, elementId, delay) {
+   let index = 0;
+   const element = document.getElementById(elementId);
 
-    const timer = setInterval(() => {
-        if (index < text.length) {
-            element.innerHTML += text[index];
-              index++;
-        } else {
-            clearInterval(timer);
-        }
-    }, delay);
+   element.innerHTML = '';
+
+   const timer = setInterval(() => {
+       if (index < text.length) {
+           element.innerHTML += text[index];
+             index++;
+       } else {
+           clearInterval(timer);
+       }
+   }, delay);
 }
 typeText("ZERO", "output-div", 500);
 
@@ -75,8 +78,21 @@ camera.position.z = 3;
 function animate() {
     requestAnimationFrame(animate);
 
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
+    const elapsed = (Date.now() - startTime) / 1000;
+
+
+    cube.rotation.x += rotationSpeed;
+    cube.rotation.y += rotationSpeed;
+
+    if (camera.position.z > 2) {
+    camera.position.z -= 0.0007;
+    }
+
+    if (elapsed > 2) {
+    if (rotationSpeed < 0.005) {
+        rotationSpeed += 0.00002;
+        }
+    }
 
     renderer.render(scene, camera);
 }
